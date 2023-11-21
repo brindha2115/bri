@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Number Guessing Game</title>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<style>
+#result {
+margin-top: 10px;
+font-weight: bold;
+}
+</style>
+</head>
+<body>
+<h2>Number Guessing Game</h2>
+<p>Guess a number between 1 and 10:</p>
+<input type="number" id="userGuess">
+<button id="submitGuess">Submit Guess</button>
+<p id="result"></p>
+<script>
+$(document).ready(function() {
+// Generate a random number between 1 and 10
+var randomNumber = Math.floor(Math.random() * 10) + 1;
+// Event handler for the "Submit Guess" button
+$("#submitGuess").click(function() {
+// Get the user's guess
+var userGuess = parseInt($("#userGuess").val());
+// Check if the guess is correct
+if (userGuess === randomNumber) {
+$("#result").text("Congratulations! You guessed the correct number.");
+} else {
+$("#result").text("Sorry, try again!");
+}
+});
+});
+</script>
+</body>
+</html>
