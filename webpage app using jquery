@@ -1,0 +1,40 @@
+Web.html:
+<!DOCTYPE html>
+<html>
+<head>
+<title>jQuery Web Page Application</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+.container
+{ width: 60%;
+margin: 0 auto;
+text-align: center;
+padding: 20px;
+}
+input, button
+{ margin: 10px;
+padding: 8px;
+}
+#result {
+margin-top: 20px;
+font-weight: bold;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>jQuery Web Page Application</h1>
+<input type="text" id="userInput" placeholder="Enter text">
+<button id="submitButton">Submit</button>
+<div id="result"></div>
+</div>
+<script>
+$(document).ready(function() {
+$('#submitButton').click(function() {
+var userInput = $('#userInput').val();
+$('#result').text('You entered: ' + userInput);
+});
+});
+</script>
+</body>
+</html>
