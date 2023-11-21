@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Registration Form</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            var name = document.forms["jobForm"]["name"].value;
+            var email = document.forms["jobForm"]["email"].value;
+            var phone = document.forms["jobForm"]["phone"].value;
+            var position = document.forms["jobForm"]["position"].value;
+            var isValid = true;
+
+            // Validate name
+            if (name == "") {
+                document.getElementById("nameErr").innerHTML = "Name is required";
+                isValid = false;
+            } else {
+                document.getElementById("nameErr").innerHTML = "";
+            }
+
+            // Validate email
+            if (email == "") {
+                document.getElementById("emailErr").innerHTML = "Email is required";
+                isValid = false;
+            } else {
+                var emailRegex = /^\S+@\S+\.\S+$/;
+                if (!emailRegex.test(email)) {
+                    document.getElementById("emailErr").innerHTML = "Invalid email address";
+                    isValid = false;
+                } else {
+                    document.getElementById("emailErr").innerHTML = "";
+                }
+            }
+
+            // Validate phone
+            if (phone == "") {
+                document.getElementById("phoneErr").innerHTML = "Phone number is required";
+                isValid = false;
+            } else {
+                var phoneRegex = /^\d{10}$/; // Assuming a 10-digit phone number
+                if (!phoneRegex.test(phone)) {
+                    document.getElementById("phoneErr").innerHTML = "Invalid phone number (10 digits)";
+                    isValid = false;
+                } else {
+                    document.getElementById("phoneErr").innerHTML = "";
+                }
+            }
+
+            // Validate position
+            if (position == "") {
+                document.getElementById("positionErr").innerHTML = "Please select a position";
+                isValid = false;
+            } else {
+                document.getElementById("positionErr").innerHTML = "";
+            }
+
+            return isValid;
+        }
+    </script>
+</head>
+<body>
+
+<h2>Job Registration Form</h2>
+
+<form name="jobForm" onsubmit="return validateForm()" method="post" action="submit_job.php">
+    Name: <input type="text" name="name">
+    <span class="error" id="nameErr"></span><br><br>
+    Email: <input type="text" name="email">
+    <span class="error" id="emailErr"></span><br><br>
+    Phone: <input type="text" name="phone">
+    <span class="error" id="phoneErr"></span><br><br>
+    Position:
+    <select name="position">
+        <option value="">Select</option>
+        <option value="developer">Developer</option>
+        <option value="designer">Designer</option>
+        <option value="manager">Manager</option>
+    </select>
+    <span class="error" id="positionErr"></span><br><br>
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html
